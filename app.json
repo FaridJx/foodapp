@@ -3,6 +3,9 @@
     "name": "foodapp",
     "slug": "foodapp",
     "version": "1.0.0",
+    "experimental": {
+      "newArchEnabled": true
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

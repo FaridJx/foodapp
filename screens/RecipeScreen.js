@@ -11,6 +11,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../reducers/favorites";
+import { getInfoItem } from "../utilis/items";
 
 export default function RecipeScreen(props) {
   const [counter, setCounter] = useState(1);
@@ -20,30 +21,15 @@ export default function RecipeScreen(props) {
   const isFav = favorite.some((fav) => fav.name === item.name);
   const dispatch = useDispatch();
 
-  const infoItem = {
-    id: item.id,
-    name: item.name,
-    color: item.color,
-    desc: item.desc,
-    ingredients: item.ingredients,
-    unit: item.unit,
-    amount: item.amount,
-    image: item.image,
-    level: item.level,
-    rating: item.rating,
-    time: item.time,
-    longDesc: item.longDesc,
-  };
-
   const handleCounter = () => {
     counter > 1 && setCounter(counter - 1);
   };
 
   const handleFav = () => {
     if (!isFav) {
-      dispatch(addFavorite(infoItem));
+      dispatch(addFavorite(getInfoItem(item)));
     } else {
-      dispatch(removeFavorite(infoItem));
+      dispatch(removeFavorite(getInfoItem(item)));
     }
   };
 
@@ -71,11 +57,11 @@ export default function RecipeScreen(props) {
       >
         <View className="pt-8 pl-4">
           <TouchableOpacity onPress={() => props.navigation.goBack()}>
-            <FontAwesome name="arrow-left" color="grey" size={30} />
+            <FontAwesome name="arrow-left" color="grey" size={40} />
           </TouchableOpacity>
         </View>
-        <View className="w-full items-center justify-center -mt-10">
-          <Image className="w-72 h-72" source={item.image} />
+        <View className="items-center justify-center -mt-10">
+          <Image className="w-72 h-60" source={item.image} />
         </View>
       </View>
       <View className="h-full" style={{ backgroundColor: item.color }}>
@@ -110,10 +96,10 @@ export default function RecipeScreen(props) {
             </View>
           </View>
           <View className="mt-6">
-            <Text className="text-4xl font-semibold">{item.name}</Text>
+            <Text className="text-3xl font-semibold w-70">{item.name}</Text>
             <Text>{item.longDesc}</Text>
           </View>
-          <View className="mt-6 flex-row justify-between items-center">
+          <View className="mt-6 flex-row justify-between items-center border-b border-gray-200 pb-2">
             <View>
               <Text className="font-bold text-base">Ingredients</Text>
               <Text className="font-bold text-gray-400">
@@ -121,14 +107,14 @@ export default function RecipeScreen(props) {
               </Text>
             </View>
             <View className="flex-row bg-slate-200 p-4 rounded-full w-32 justify-around">
-              <TouchableOpacity onPress={() => handleCounter()}>
-                <Text className="text-base font-bold text-purple-900">-</Text>
+              <TouchableOpacity onPress={() => handleCounter()} className="justify-center">
+                <FontAwesome className="text-base font-bold" name="minus" size={20} color="#4C1D95" />
               </TouchableOpacity>
               <Text className="text-base font-bold text-purple-900">
                 {counter}
               </Text>
-              <TouchableOpacity onPress={() => setCounter(counter + 1)}>
-                <Text className="text-base font-bold text-purple-900">+</Text>
+              <TouchableOpacity onPress={() => setCounter(counter + 1)} className="justify-center">
+                <FontAwesome className="text-base font-bold" name="plus" size={20} color="#4C1D95" />
               </TouchableOpacity>
             </View>
           </View>
@@ -139,6 +125,8 @@ export default function RecipeScreen(props) {
       </View>
     </SafeAreaView>
   );
+
 }
 
 const styles = StyleSheet.create({});
+

@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
+import { getInfoItem } from '../utilis/items'
 
 export default function RecipeCard(props) {
   return (
-    <TouchableOpacity onPress={() => props.navigation.navigate("Recipe", {...props})}>
+    <TouchableOpacity onPress={() => props.navigation.navigate("Recipe", getInfoItem(props))}>
       <View
         className="w-44 h-72 m-2 p-2"
         style={{
@@ -19,7 +20,7 @@ export default function RecipeCard(props) {
           </View>
           <View className="items-end">
             <Text className="text-purple-900 font-bold text-right">{props.name}</Text>
-            <Text className="text-gray-400 text-right">{props.desc}</Text>
+            <Text className="text-gray-600 text-right">{props.desc}</Text>
           </View>
         </View>
       </View>
