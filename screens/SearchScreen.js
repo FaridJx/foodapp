@@ -27,7 +27,7 @@ export default function SearchScreen({ navigation }) {
   // console.log(recipes);
 
   return (
-    <SafeAreaView className="flex-1 bg-white pt-4">
+    <SafeAreaView className="flex-1 bg-white pt-2">
       <View className="pl-6">
         <Text className="text-purple-900 text-3xl font-semibold">
           What do you want to eat today?
