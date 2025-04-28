@@ -23,7 +23,8 @@ export default function RecipeScreen(props) {
 
   const handleCounter = () => {
     counter > 1 && setCounter(counter - 1);
-  };
+  }; 
+  
 
   const handleFav = () => {
     if (!isFav) {
