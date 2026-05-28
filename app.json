@@ -3,6 +3,7 @@
     "name": "foodapp",
     "slug": "foodapp",
     "version": "1.0.0",
+    "sdkVersion": "54.0.0",
     "experimental": {
       "newArchEnabled": true
     },
@@ -38,6 +39,8 @@
         "projectId": "ea52e5b5-a9d9-4b0c-b882-05dffda16fe6"
       }
     },
-    "sdkVersion": "54.0.0"
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
